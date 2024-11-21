@@ -2,12 +2,33 @@ GRAPH_FIELD_SEP = "<SEP>"
 
 PROMPTS = {}
 
-PROMPTS["DEFAULT_TUPLE_DELIMITER"] = "<|>"
+PROMPTS["DEFAULT_TUPLE_DELIMITER"] = "|"
 PROMPTS["DEFAULT_RECORD_DELIMITER"] = "##"
 PROMPTS["DEFAULT_COMPLETION_DELIMITER"] = "<|COMPLETE|>"
 PROMPTS["process_tickers"] = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
 
-PROMPTS["DEFAULT_ENTITY_TYPES"] = ["organization", "person", "geo", "event"]
+PROMPTS["DEFAULT_ENTITY_TYPES"] = [
+    "organization", 
+    "person", 
+    "geo", 
+    "event", 
+    "concurrency", 
+    "location", 
+    "law", 
+    "date", 
+    "amount", 
+    "contract", 
+    "stakeholder", 
+    "property", 
+    "violation", 
+    "procedure", 
+    "sector", 
+    "penalty", 
+    "jurisdiction", 
+    "ownership", 
+    "tax", 
+    "document"
+]
 
 PROMPTS["entity_extraction"] = """-Mục tiêu-
 Dựa trên văn bản liên quan đến luật kinh tế Việt Nam và danh sách các loại thực thể, xác định tất cả các thực thể thuộc các loại đó từ văn bản và các mối quan hệ giữa các thực thể đã xác định.
