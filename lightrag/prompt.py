@@ -35,7 +35,7 @@ Dựa trên văn bản liên quan đến luật kinh tế Việt Nam và danh s�
 
 -Các bước thực hiện-
 1. Xác định tất cả các thực thể. Đối với mỗi thực thể đã xác định, trích xuất thông tin sau:
-- tên_thực_thể: Tên của thực thể, viết hoa
+- tên_thực_thể: Tên của thực thể, viết hoa (Trừ các thực thể như: Chương, điều, khoản, điểm)
 - loại_thực_thể: Một trong các loại sau: [{entity_types}]
 - mô_tả_thực_thể: Mô tả chi tiết về đặc điểm, vai trò hoặc các vấn đề pháp lý liên quan đến thực thể trong luật kinh tế
 Định dạng mỗi thực thể như sau: ("entity"{tuple_delimiter}<tên_thực_thể>{tuple_delimiter}<loại_thực_thể>{tuple_delimiter}<mô_tả_thực_thể>)
@@ -70,20 +70,39 @@ Ví dụ:
 -Examples-
 ######################
 Example 1:
-Entity_types: [cá_nhân, văn_bản_pháp_luật, tổ_chức, quy_định, nghĩa_vụ_pháp_lý, hình_thức_doanh_nghiệp, sự_kiện]
+Entity_types: ["organization", 
+    "person", 
+    "geo", 
+    "event", 
+    "concurrency", 
+    "location", 
+    "law", 
+    "date", 
+    "amount", 
+    "contract", 
+    "stakeholder", 
+    "property", 
+    "violation", 
+    "procedure", 
+    "sector", 
+    "penalty", 
+    "jurisdiction", 
+    "ownership", 
+    "tax", 
+    "document"]
 Text:
 Trong phiên họp của Ủy ban Thường vụ Quốc hội, Bộ trưởng Nguyễn Văn A trình bày về việc thực thi Luật Doanh nghiệp 2020. Ông nhấn mạnh vai trò của Sở Kế hoạch và Đầu tư trong quy trình đăng ký kinh doanh mới. "Chúng ta cần đơn giản hóa thủ tục hành chính," ông nói, "đồng thời tăng cường giám sát để ngăn chặn việc thành lập doanh nghiệp ma."
 Bà Trần Thị B, Chủ tịch VCCI, bày tỏ quan ngại về các quy định xử phạt vi phạm trong lĩnh vực đăng ký kinh doanh. Theo Nghị định 122, mức phạt có thể lên đến 100 triệu đồng đối với hành vi khai man trong hồ sơ đăng ký. VCCI đề xuất cần có hướng dẫn chi tiết hơn về quy trình thẩm định để đảm bảo công bằng cho doanh nghiệp.
 ################
 Output:
-("entity"{tuple_delimiter}"Nguyễn Văn A"{tuple_delimiter}"cá_nhân"{tuple_delimiter}"Bộ trưởng trình bày về thực thi Luật Doanh nghiệp 2020"){record_delimiter}
-("entity"{tuple_delimiter}"Trần Thị B"{tuple_delimiter}"cá_nhân"{tuple_delimiter}"Chủ tịch VCCI bày tỏ quan ngại về quy định xử phạt"){record_delimiter}
-("entity"{tuple_delimiter}"Luật Doanh nghiệp 2020"{tuple_delimiter}"văn_bản_pháp_luật"{tuple_delimiter}"Luật quy định về đăng ký và hoạt động doanh nghiệp"){record_delimiter}
-("entity"{tuple_delimiter}"Nghị định 122"{tuple_delimiter}"văn_bản_pháp_luật"{tuple_delimiter}"Quy định mức xử phạt vi phạm trong đăng ký kinh doanh"){record_delimiter}
-("entity"{tuple_delimiter}"VCCI"{tuple_delimiter}"tổ_chức"{tuple_delimiter}"Tổ chức đại diện cho cộng đồng doanh nghiệp"){record_delimiter}
-("entity"{tuple_delimiter}"Sở Kế hoạch và Đầu tư"{tuple_delimiter}"tổ_chức"{tuple_delimiter}"Cơ quan thực hiện thủ tục đăng ký kinh doanh"){record_delimiter}
-("entity"{tuple_delimiter}"Quy trình đăng ký kinh doanh"{tuple_delimiter}"quy_định"{tuple_delimiter}"Thủ tục để thành lập doanh nghiệp mới"){record_delimiter}
-("entity"{tuple_delimiter}"Xử phạt vi phạm"{tuple_delimiter}"nghĩa_vụ_pháp_lý"{tuple_delimiter}"Hình thức xử lý đối với hành vi khai man, vi phạm quy định"){record_delimiter}
+("entity"{tuple_delimiter}"Nguyễn Văn A"{tuple_delimiter}"person"{tuple_delimiter}"Bộ trưởng trình bày về thực thi Luật Doanh nghiệp 2020"){record_delimiter}
+("entity"{tuple_delimiter}"Trần Thị B"{tuple_delimiter}"person"{tuple_delimiter}"Chủ tịch VCCI bày tỏ quan ngại về quy định xử phạt"){record_delimiter}
+("entity"{tuple_delimiter}"Luật Doanh nghiệp 2020"{tuple_delimiter}"law"{tuple_delimiter}"Luật quy định về đăng ký và hoạt động doanh nghiệp"){record_delimiter}
+("entity"{tuple_delimiter}"Nghị định 122"{tuple_delimiter}"law"{tuple_delimiter}"Quy định mức xử phạt vi phạm trong đăng ký kinh doanh"){record_delimiter}
+("entity"{tuple_delimiter}"VCCI"{tuple_delimiter}"organization"{tuple_delimiter}"Tổ chức đại diện cho cộng đồng doanh nghiệp"){record_delimiter}
+("entity"{tuple_delimiter}"Sở Kế hoạch và Đầu tư"{tuple_delimiter}"organization"{tuple_delimiter}"Cơ quan thực hiện thủ tục đăng ký kinh doanh"){record_delimiter}
+("entity"{tuple_delimiter}"Quy trình đăng ký kinh doanh"{tuple_delimiter}"contract"{tuple_delimiter}"Thủ tục để thành lập doanh nghiệp mới"){record_delimiter}
+("entity"{tuple_delimiter}"Xử phạt vi phạm"{tuple_delimiter}"penalty"{tuple_delimiter}"Hình thức xử lý đối với hành vi khai man, vi phạm quy định"){record_delimiter}
 ("relationship"{tuple_delimiter}"Nguyễn Văn A"{tuple_delimiter}"Luật Doanh nghiệp 2020"{tuple_delimiter}"Trình bày về việc thực thi luật"{tuple_delimiter}"thực thi pháp luật"{tuple_delimiter}8){record_delimiter}
 ("relationship"{tuple_delimiter}"Trần Thị B"{tuple_delimiter}"Nghị định 122"{tuple_delimiter}"Bày tỏ quan ngại về quy định xử phạt"{tuple_delimiter}"góp ý chính sách"{tuple_delimiter}7){record_delimiter}
 ("relationship"{tuple_delimiter}"VCCI"{tuple_delimiter}"Quy trình đăng ký kinh doanh"{tuple_delimiter}"Đề xuất hướng dẫn chi tiết về quy trình thẩm định"{tuple_delimiter}"cải cách thủ tục"{tuple_delimiter}6){record_delimiter}
@@ -99,6 +118,23 @@ Text: {input_text}
 ######################
 Output:
 """
+
+PROMPTS[
+    "summarize_entity_descriptions"
+] = """Bạn là một trợ lý hữu ích, chịu trách nhiệm tạo ra một bản tóm tắt toàn diện về dữ liệu được cung cấp dưới đây.
+Dựa trên một hoặc hai thực thể và danh sách các mô tả, tất cả đều liên quan đến cùng một thực thể hoặc nhóm thực thể.
+Vui lòng kết hợp tất cả các thông tin này thành một mô tả tổng hợp. Đảm bảo bao gồm thông tin thu thập từ tất cả các mô tả.
+Nếu các mô tả được cung cấp mâu thuẫn với nhau, vui lòng giải quyết mâu thuẫn và cung cấp một bản tóm tắt mạch lạc.
+Đảm bảo bản tóm tắt được viết ở ngôi thứ ba, và bao gồm tên thực thể để có ngữ cảnh đầy đủ.
+
+#######
+-Dữ Liệu-
+Thực thể: {entity_name}
+Danh sách mô tả: {description_list}
+#######
+Đầu ra:
+"""
+
 
 PROMPTS[
     "entiti_continue_extraction"
